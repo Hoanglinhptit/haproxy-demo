@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  weba:
+    build: .
+    expose:
+      - 80
+
+  webb:
+    build: .
+    expose:
+      - 80
+
+  webc:
+    build: .
+    expose:
+      - 80
+
+  haproxy:
+    image: haproxy:2.4
+    volumes:
+    - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    links:
+    - weba
+    - webb
+    - webc
+    ports:
+    - "80:80"
+    - "8181:8181"
+    expose:
+    - "80"
+    - "8181"
