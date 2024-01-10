@@ -21,3 +21,8 @@ docker run -p 80:80 --name web node-hello
 ```
 docker compose up
 ```
+
+using ab test tool
+./ab -n 10000 -c 400 http://127.0.0.1:80/
+
+curl localhost:80
